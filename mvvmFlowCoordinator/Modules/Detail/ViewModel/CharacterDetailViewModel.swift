@@ -8,13 +8,13 @@
 import Foundation
 
 protocol CharacterDetailViewModelProtocol {
-    var character: Character { get set }
+    var breed: Breed { get set }
 }
 
 internal final class CharacterDetailViewModel: CharacterDetailViewModelProtocol {
-    internal var character: Character
+    internal var breed: Breed
     
-    internal init(character: Character) {
-        self.character = character
+    internal init(breed: Breed) {
+        self.breed = breed
     }
 }

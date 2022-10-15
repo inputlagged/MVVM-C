@@ -89,32 +89,33 @@ internal final class CharacterDetailViewController: UIViewController {
     }
     
     private func setupLabels() {
-        let selectedCharacter = viewModel.character
-        nameLabel.text = "Name: \(selectedCharacter.name)"
-        heightLabel.text = "Height: \(selectedCharacter.height)"
-        massLabel.text = "Mass: \(selectedCharacter.mass)"
-        genderLabel.text = "Gender: \(selectedCharacter.gender)"
+        let selectedBreed = viewModel.breed
+        nameLabel.text = selectedBreed.name
+//        nameLabel.text = "Name: \(selectedCharacter.name)"
+//        heightLabel.text = "Height: \(selectedCharacter.height)"
+//        massLabel.text = "Mass: \(selectedCharacter.mass)"
+//        genderLabel.text = "Gender: \(selectedCharacter.gender)"
     }
 }
 
-#if DEBUG
-import SwiftUI
-
-struct InfoVCRepresentable: UIViewControllerRepresentable {
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        // leave this empty
-    }
-
-    @available(iOS 13.0.0, *)
-    func makeUIViewController(context: Context) -> UIViewController {
-        CharacterDetailViewController(viewModel: CharacterDetailViewModel(character: Character(name: "John doe", height: "1337", mass: "228", gender: "Unhuman")))
-    }
-}
-
-@available(iOS 13.0, *)
-struct InfoVCPreview: PreviewProvider {
-    static var previews: some View {
-       InfoVCRepresentable()
-    }
-}
-#endif
+//#if DEBUG
+//import SwiftUI
+//
+//struct InfoVCRepresentable: UIViewControllerRepresentable {
+//    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+//        // leave this empty
+//    }
+//
+//    @available(iOS 13.0.0, *)
+//    func makeUIViewController(context: Context) -> UIViewController {
+////        CharacterDetailViewController(viewModel: CharacterDetailViewModel(character: Character(name: "John doe", height: "1337", mass: "228", gender: "Unhuman")))
+//    }
+//}
+//
+//@available(iOS 13.0, *)
+//struct InfoVCPreview: PreviewProvider {
+//    static var previews: some View {
+//       InfoVCRepresentable()
+//    }
+//}
+//#endif

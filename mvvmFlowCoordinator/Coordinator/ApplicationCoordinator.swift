@@ -2,7 +2,7 @@ import UIKit
 import Swinject
 
 protocol DetailScreen: AnyObject {
-    func presentDetailScreen(character: Character)
+    func presentDetailScreen(breed: Breed)
 }
 
 internal final class ApplicationCoordinator: Coordinator, DetailScreen {
@@ -26,8 +26,8 @@ internal final class ApplicationCoordinator: Coordinator, DetailScreen {
         navigationController.pushViewController(mainViewController, animated: true)
     }
     
-    internal func presentDetailScreen(character: Character) {
-        let viewModel = CharacterDetailViewModel(character: character)
+    internal func presentDetailScreen(breed: Breed) {
+        let viewModel = CharacterDetailViewModel(breed: breed)
         let detailViewController = CharacterDetailViewController(viewModel: viewModel)
         navigationController.pushViewController(detailViewController, animated: true)
     }

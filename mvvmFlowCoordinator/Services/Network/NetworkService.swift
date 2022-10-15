@@ -6,15 +6,16 @@
 //
 
 import Foundation
+import ObjectMapper
 
 protocol NetworkServiceProtocol {
-    func fetchCharacters(page: Int, completion: @escaping (Result<ResponseInfo, Error>) -> Void)
+    func fetchBreeds(params: BreedURLParameters, completion: @escaping (Result<[Breed], Error>) -> Void)
 }
 
 internal struct NetworkService {
-    internal func baseRequest<T: Decodable>(url: String, completion: @escaping (Result<T, Error>) -> Void) {
-        guard let url = URL(string: url) else { return }
-        URLSession.shared.dataTask(with: url) { data, _, error in
+    internal func baseRequest<T: Mappable>(request: URLRequest, completion: @escaping (Result<[T], Error>) -> Void) {
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -22,13 +23,9 @@ internal struct NetworkService {
             
             guard let data = data else { return }
             
-            
-            let decoder = JSONDecoder()
-            do {
-                let decodedModel = try decoder.decode(T.self, from: data)
-                completion(.success(decodedModel))
-            } catch {
-                completion(.failure(error))
+            if let jsonString = String(data: data, encoding: .utf8) {
+                let model = Mapper<T>().mapArray(JSONString: jsonString)
+                completion(.success(model!))
             }
             
         }.resume()
@@ -36,7 +33,8 @@ internal struct NetworkService {
 }
 
 extension NetworkService: NetworkServiceProtocol {
-    func fetchCharacters(page: Int, completion: @escaping (Result<ResponseInfo, Error>) -> Void) {
-        self.baseRequest(url: "https://swapi.dev/api/people/?page=\(page)", completion: completion)
+    func fetchBreeds(params: BreedURLParameters, completion: @escaping (Result<[Breed], Error>) -> Void) {
+        let request = URLFactory.getBreedsRequest(params: params)
+        self.baseRequest(request: request, completion: completion)
     }
 }

@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "objectmapper",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tristanhimmelman/ObjectMapper",
+      "state" : {
+        "branch" : "master",
+        "revision" : "a593b4d647a970b3d184d046f8f52b945083ccf9"
+      }
+    },
+    {
       "identity" : "snapkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SnapKit/SnapKit",
