@@ -10,9 +10,9 @@ import SnapKit
 
 internal final class CatCollectionViewCell: UICollectionViewCell {
     private let catImageView: UIImageView = {
-        let imageView = UIImageView()
+        let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         return imageView
     }()
     
@@ -30,12 +30,20 @@ internal final class CatCollectionViewCell: UICollectionViewCell {
         setupConstraints()
     }
     
+    internal override func prepareForReuse() {
+        super.prepareForReuse()
+        self.catImageView.image = nil
+    }
+    
     internal required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    internal func setup(with viewModel: Breed) {
-        catImageView.image = UIImage(named: "example")
+    internal func setup(with cat: Breed) {
+        let image = UIImage(named: "catPlaceholder")
+        if let image = cat.image {
+            catImageView.setImage(cat.image!, catID: cat.name!)
+        }
     }
     
     private func setupView() {

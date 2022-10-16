@@ -10,10 +10,10 @@ import Foundation
 protocol MainViewModelProtocol {
     var title: String { get set }
     var reload: (() -> ())? { get set }
-    
     var breeds: [Breed] { get set }
+    
     func fetchBreeds()
-    func viewModelForSelectedRow(at indexPath: IndexPath) 
+    func viewModelForSelectedRow(at indexPath: IndexPath)
 }
 
 internal final class MainViewModel: MainViewModelProtocol {

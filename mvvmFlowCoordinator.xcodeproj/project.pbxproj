@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		02271D1E28FBDA5C00A5BA2B /* CatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02271D1D28FBDA5C00A5BA2B /* CatCollectionViewCell.swift */; };
+		02271D2328FBFCBF00A5BA2B /* UIImage + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02271D2228FBFCBF00A5BA2B /* UIImage + Extensions.swift */; };
+		02271D2628FBFED100A5BA2B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 02271D2528FBFED100A5BA2B /* Kingfisher */; };
 		022A208E28F506EE00A4C4C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022A208D28F506EE00A4C4C2 /* AppDelegate.swift */; };
 		022A209228F506EE00A4C4C2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022A209128F506EE00A4C4C2 /* MainViewController.swift */; };
 		022A209728F506F100A4C4C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 022A209628F506F100A4C4C2 /* Assets.xcassets */; };
@@ -30,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		02271D1D28FBDA5C00A5BA2B /* CatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCollectionViewCell.swift; sourceTree = "<group>"; };
+		02271D2228FBFCBF00A5BA2B /* UIImage + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extensions.swift"; sourceTree = "<group>"; };
 		022A208A28F506EE00A4C4C2 /* mvvmFlowCoordinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mvvmFlowCoordinator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		022A208D28F506EE00A4C4C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		022A209128F506EE00A4C4C2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02271D2628FBFED100A5BA2B /* Kingfisher in Frameworks */,
 				02749E1A28F93691002D0436 /* ObjectMapper in Frameworks */,
 				022F14F028F70FAE009EB42D /* SnapKit in Frameworks */,
 				02EDAE2328F7D34A00AC6B6E /* Swinject in Frameworks */,
@@ -69,6 +73,14 @@
 				02271D1D28FBDA5C00A5BA2B /* CatCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		02271D1F28FBE18E00A5BA2B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				02271D2228FBFCBF00A5BA2B /* UIImage + Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		022A208128F506EE00A4C4C2 = {
@@ -90,6 +102,7 @@
 		022A208C28F506EE00A4C4C2 /* mvvmFlowCoordinator */ = {
 			isa = PBXGroup;
 			children = (
+				02271D1F28FBE18E00A5BA2B /* Helpers */,
 				022A209B28F506F100A4C4C2 /* Info.plist */,
 				02EDAE2528F7D38400AC6B6E /* Assembly */,
 				02EDAE2428F7D35000AC6B6E /* Application */,
@@ -243,6 +256,7 @@
 				022F14EF28F70FAE009EB42D /* SnapKit */,
 				02EDAE2228F7D34A00AC6B6E /* Swinject */,
 				02749E1928F93691002D0436 /* ObjectMapper */,
+				02271D2528FBFED100A5BA2B /* Kingfisher */,
 			);
 			productName = mvvmFlowCoordinator;
 			productReference = 022A208A28F506EE00A4C4C2 /* mvvmFlowCoordinator.app */;
@@ -276,6 +290,7 @@
 				022F14EE28F70FAE009EB42D /* XCRemoteSwiftPackageReference "SnapKit" */,
 				02EDAE2128F7D34A00AC6B6E /* XCRemoteSwiftPackageReference "Swinject" */,
 				02749E1828F93691002D0436 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
+				02271D2428FBFED000A5BA2B /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 022A208B28F506EE00A4C4C2 /* Products */;
 			projectDirPath = "";
@@ -309,6 +324,7 @@
 				02749E1C28F938EC002D0436 /* URLFactory.swift in Sources */,
 				022A209228F506EE00A4C4C2 /* MainViewController.swift in Sources */,
 				022A20B628F512D400A4C4C2 /* CoordinatorProtocol.swift in Sources */,
+				02271D2328FBFCBF00A5BA2B /* UIImage + Extensions.swift in Sources */,
 				022A208E28F506EE00A4C4C2 /* AppDelegate.swift in Sources */,
 				02EDAE2D28F7D9FC00AC6B6E /* CharacterDetailViewController.swift in Sources */,
 				02EDAE2F28F7DB5C00AC6B6E /* CharacterDetailViewModel.swift in Sources */,
@@ -513,6 +529,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		02271D2428FBFED000A5BA2B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		022F14EE28F70FAE009EB42D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -540,6 +564,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		02271D2528FBFED100A5BA2B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02271D2428FBFED000A5BA2B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		022F14EF28F70FAE009EB42D /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 022F14EE28F70FAE009EB42D /* XCRemoteSwiftPackageReference "SnapKit" */;
