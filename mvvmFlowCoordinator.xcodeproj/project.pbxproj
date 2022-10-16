@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02271D1E28FBDA5C00A5BA2B /* CatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02271D1D28FBDA5C00A5BA2B /* CatCollectionViewCell.swift */; };
 		022A208E28F506EE00A4C4C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022A208D28F506EE00A4C4C2 /* AppDelegate.swift */; };
 		022A209228F506EE00A4C4C2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022A209128F506EE00A4C4C2 /* MainViewController.swift */; };
 		022A209728F506F100A4C4C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 022A209628F506F100A4C4C2 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02271D1D28FBDA5C00A5BA2B /* CatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCollectionViewCell.swift; sourceTree = "<group>"; };
 		022A208A28F506EE00A4C4C2 /* mvvmFlowCoordinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mvvmFlowCoordinator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		022A208D28F506EE00A4C4C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		022A209128F506EE00A4C4C2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02271D1C28FBDA4D00A5BA2B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				02271D1D28FBDA5C00A5BA2B /* CatCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		022A208128F506EE00A4C4C2 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +104,7 @@
 		022A20A128F5077500A4C4C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				02271D1C28FBDA4D00A5BA2B /* Cell */,
 				022A209128F506EE00A4C4C2 /* MainViewController.swift */,
 			);
 			path = View;
@@ -293,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02EDAE2728F7D39400AC6B6E /* Assembly.swift in Sources */,
+				02271D1E28FBDA5C00A5BA2B /* CatCollectionViewCell.swift in Sources */,
 				022A20B428F50F7400A4C4C2 /* ApplicationCoordinator.swift in Sources */,
 				02749E1C28F938EC002D0436 /* URLFactory.swift in Sources */,
 				022A209228F506EE00A4C4C2 /* MainViewController.swift in Sources */,

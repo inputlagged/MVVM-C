@@ -16,14 +16,12 @@ internal final class MainViewController: UIViewController {
     private lazy var catsCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(CatCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = .lightGray
         return collectionView
-//        let tableView = UITableView(frame: .zero, style: .insetGrouped)
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//        tableView.dataSource = self
-//        tableView.delegate = self
-//        return tableView
     }()
     
     private let acitvityIndicator: UIActivityIndicatorView = {
@@ -34,9 +32,6 @@ internal final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let cell = UICollectionViewCell()
-//        cell.reuseIdentifier = "someid"
-        catsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "someid")
         title = viewModel.title
         addSubviews()
         setupConstraints()
@@ -52,7 +47,10 @@ internal final class MainViewController: UIViewController {
     
     private func setupConstraints() {
         catsCollectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(16)
         }
         
         acitvityIndicator.snp.makeConstraints {
@@ -75,7 +73,13 @@ internal final class MainViewController: UIViewController {
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
- 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width / 2.5, height: collectionView.frame.width / 2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    }
 }
 
 extension MainViewController: UICollectionViewDataSource {
@@ -84,55 +88,14 @@ extension MainViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "someid", for: indexPath)
-        cell.backgroundColor = .red
-//        let cell = UICollectionViewCell()
-//        let view = UIView()
-//        view.backgroundColor = .red
-//        cell.backgroundView =
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CatCollectionViewCell
+        cell.setup(with: viewModel.breeds[indexPath.row])
+//        cell.backgroundColor = .red
+//        cell.set
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
 }
-//extension MainViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        viewModel.viewModelForSelectedRow(at: indexPath)
-//    }
-//}
-//
-//extension MainViewController: UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        viewModel.breeds.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-//        if indexPath.row == viewModel.breeds.count - 1 {
-//            viewModel.fetchBreeds()
-//        }
-//        let breed = viewModel.breeds[indexPath.row]
-//        cell.textLabel?.text = breed.name
-//        return cell
-//    }
-//}
-
-//#if DEBUG
-//import SwiftUI
-//
-//struct InfoVCRepresentable: UIViewControllerRepresentable {
-//    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-//        // leave this empty
-//    }
-//
-//    @available(iOS 13.0.0, *)
-//    func makeUIViewController(context: Context) -> UIViewController {
-//        MainViewController()
-//    }
-//}
-//
-//@available(iOS 13.0, *)
-//struct InfoVCPreview: PreviewProvider {
-//    static var previews: some View {
-//       InfoVCRepresentable()
-//    }
-//}
-//#endif
