@@ -15,12 +15,13 @@ internal final class MainViewController: UIViewController {
 
     private lazy var catsCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.estimatedItemSize = .zero
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(CatCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .lightGray
+        collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
     
@@ -32,6 +33,7 @@ internal final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .white
         title = viewModel.title
         addSubviews()
         setupConstraints()
@@ -93,6 +95,9 @@ extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CatCollectionViewCell
+        if indexPath.row == viewModel.breeds.count - 1, viewModel.breeds.count < 47 {
+            viewModel.fetchBreeds()
+        }
         cell.setup(with: viewModel.breeds[indexPath.row])
         return cell
     }

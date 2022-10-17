@@ -43,7 +43,7 @@ internal final class CatDetailViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
 //        tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "catInfoCell")
-        tableView.dataSource = self
+//        tableView.dataSource = self
         return tableView
     }()
     

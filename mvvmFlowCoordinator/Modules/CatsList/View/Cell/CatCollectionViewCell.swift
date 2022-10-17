@@ -41,9 +41,14 @@ internal final class CatCollectionViewCell: UICollectionViewCell {
     
     internal func setup(with cat: Breed) {
         let image = UIImage(named: "catPlaceholder")
-        if let image = cat.image {
+        if cat.image != nil {
             catImageView.setImage(cat.image!, catID: cat.name!)
+        } else {
+            catImageView.image = image
         }
+//        if let image = cat.image {
+//            catImageView.setImage(cat.image!, catID: cat.name!)
+//        }
     }
     
     private func setupView() {

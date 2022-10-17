@@ -23,7 +23,7 @@ internal final class MainViewModel: MainViewModelProtocol {
     internal weak var coordinator: DetailScreen!
     
     private let networkService: NetworkServiceProtocol
-    private var URLParamters = BreedURLParameters(page: 1, limit: 10)
+    private var URLParamters = BreedURLParameters(page: 1, limit: 20)
     
     internal var title = S.title
     
