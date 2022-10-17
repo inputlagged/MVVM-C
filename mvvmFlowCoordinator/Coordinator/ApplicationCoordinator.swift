@@ -27,8 +27,8 @@ internal final class ApplicationCoordinator: Coordinator, DetailScreen {
     }
     
     internal func presentDetailScreen(breed: Breed) {
-        let viewModel = CharacterDetailViewModel(breed: breed)
-        let detailViewController = CharacterDetailViewController(viewModel: viewModel)
+        let viewModel = CatDetailViewModel(breed: breed)
+        let detailViewController = CatDetailViewController(viewModel: viewModel)
         navigationController.pushViewController(detailViewController, animated: true)
     }
     

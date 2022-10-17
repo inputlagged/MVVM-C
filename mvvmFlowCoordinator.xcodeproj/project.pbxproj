@@ -26,8 +26,8 @@
 		02EDAE1828F7158800AC6B6E /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EDAE1728F7158800AC6B6E /* Strings+Generated.swift */; };
 		02EDAE2328F7D34A00AC6B6E /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 02EDAE2228F7D34A00AC6B6E /* Swinject */; };
 		02EDAE2728F7D39400AC6B6E /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EDAE2628F7D39400AC6B6E /* Assembly.swift */; };
-		02EDAE2D28F7D9FC00AC6B6E /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EDAE2C28F7D9FC00AC6B6E /* CharacterDetailViewController.swift */; };
-		02EDAE2F28F7DB5C00AC6B6E /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EDAE2E28F7DB5C00AC6B6E /* CharacterDetailViewModel.swift */; };
+		02EDAE2D28F7D9FC00AC6B6E /* CatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EDAE2C28F7D9FC00AC6B6E /* CatDetailViewController.swift */; };
+		02EDAE2F28F7DB5C00AC6B6E /* CatDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EDAE2E28F7DB5C00AC6B6E /* CatDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +48,8 @@
 		02EDAE1528F7138A00AC6B6E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		02EDAE1728F7158800AC6B6E /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		02EDAE2628F7D39400AC6B6E /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
-		02EDAE2C28F7D9FC00AC6B6E /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
-		02EDAE2E28F7DB5C00AC6B6E /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
+		02EDAE2C28F7D9FC00AC6B6E /* CatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailViewController.swift; sourceTree = "<group>"; };
+		02EDAE2E28F7DB5C00AC6B6E /* CatDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,19 +126,19 @@
 		022A20A228F507A700A4C4C2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				022A20A528F507B300A4C4C2 /* First */,
-				02EDAE2828F7D9B500AC6B6E /* Detail */,
+				022A20A528F507B300A4C4C2 /* CatsList */,
+				02EDAE2828F7D9B500AC6B6E /* CatDetail */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		022A20A528F507B300A4C4C2 /* First */ = {
+		022A20A528F507B300A4C4C2 /* CatsList */ = {
 			isa = PBXGroup;
 			children = (
 				022A20A128F5077500A4C4C2 /* View */,
 				022A20A628F507CE00A4C4C2 /* ViewModel */,
 			);
-			path = First;
+			path = CatsList;
 			sourceTree = "<group>";
 		};
 		022A20A628F507CE00A4C4C2 /* ViewModel */ = {
@@ -211,19 +211,19 @@
 			path = Assembly;
 			sourceTree = "<group>";
 		};
-		02EDAE2828F7D9B500AC6B6E /* Detail */ = {
+		02EDAE2828F7D9B500AC6B6E /* CatDetail */ = {
 			isa = PBXGroup;
 			children = (
 				02EDAE2928F7D9E000AC6B6E /* View */,
 				02EDAE2A28F7D9E400AC6B6E /* ViewModel */,
 			);
-			path = Detail;
+			path = CatDetail;
 			sourceTree = "<group>";
 		};
 		02EDAE2928F7D9E000AC6B6E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				02EDAE2C28F7D9FC00AC6B6E /* CharacterDetailViewController.swift */,
+				02EDAE2C28F7D9FC00AC6B6E /* CatDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,7 +231,7 @@
 		02EDAE2A28F7D9E400AC6B6E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				02EDAE2E28F7DB5C00AC6B6E /* CharacterDetailViewModel.swift */,
+				02EDAE2E28F7DB5C00AC6B6E /* CatDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -326,8 +326,8 @@
 				022A20B628F512D400A4C4C2 /* CoordinatorProtocol.swift in Sources */,
 				02271D2328FBFCBF00A5BA2B /* UIImage + Extensions.swift in Sources */,
 				022A208E28F506EE00A4C4C2 /* AppDelegate.swift in Sources */,
-				02EDAE2D28F7D9FC00AC6B6E /* CharacterDetailViewController.swift in Sources */,
-				02EDAE2F28F7DB5C00AC6B6E /* CharacterDetailViewModel.swift in Sources */,
+				02EDAE2D28F7D9FC00AC6B6E /* CatDetailViewController.swift in Sources */,
+				02EDAE2F28F7DB5C00AC6B6E /* CatDetailViewModel.swift in Sources */,
 				02749E1E28F9397E002D0436 /* API.swift in Sources */,
 				02ABE9C328F57DA000CAC0F6 /* NetworkService.swift in Sources */,
 				022A20A828F507E900A4C4C2 /* MainViewModel.swift in Sources */,

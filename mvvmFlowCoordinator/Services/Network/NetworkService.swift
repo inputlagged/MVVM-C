@@ -14,7 +14,6 @@ protocol NetworkServiceProtocol {
 
 internal struct NetworkService {
     internal func baseRequest<T: Mappable>(request: URLRequest, completion: @escaping (Result<[T], Error>) -> Void) {
-        
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 completion(.failure(error))

@@ -12,13 +12,17 @@ struct Breed: Mappable {
     var name: String?
     var origin: String?
     var image: String?
+    var temperament: String?
+    var description: String?
     
     init?(map: Map) {}
     
     mutating func mapping(map: Map) {
-        name   <- map["name"]
-        origin <- map["origin"]
-        image  <- map["image.url"]
+        name        <- map["name"]
+        origin      <- map["origin"]
+        image       <- map["image.url"]
+        temperament <- map["temperament"]
+        description <- map["description"]
     }
 }
 

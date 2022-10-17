@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol CharacterDetailViewModelProtocol {
+protocol CatDetailViewModelProtocol {
     var breed: Breed { get set }
 }
 
-internal final class CharacterDetailViewModel: CharacterDetailViewModelProtocol {
+internal final class CatDetailViewModel: CatDetailViewModelProtocol {
     internal var breed: Breed
     
     internal init(breed: Breed) {
