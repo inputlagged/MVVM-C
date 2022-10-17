@@ -18,14 +18,31 @@ internal final class CatDetailViewController: UIViewController {
         imageView.layer.borderColor = UIColor.lightGray.cgColor
         imageView.layer.borderWidth = 5
         imageView.layer.cornerRadius = view.frame.width / 4
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         return imageView
+    }()
+    
+    private lazy var temperamentLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: .light)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
     }()
     
     private lazy var catInfoTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
 //        tableView.delegate = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "catInfoCell")
         tableView.dataSource = self
         return tableView
     }()
@@ -52,6 +69,8 @@ internal final class CatDetailViewController: UIViewController {
     
     private func addSubviews() {
         view.addSubview(catImageView)
+        view.addSubview(temperamentLabel)
+        view.addSubview(descriptionLabel)
         view.addSubview(catInfoTableView)
     }
     
@@ -63,11 +82,18 @@ internal final class CatDetailViewController: UIViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(8)
         }
         
-        catInfoTableView.snp.makeConstraints {
+        temperamentLabel.snp.makeConstraints {
             $0.top.equalTo(catImageView.snp.bottom).offset(16)
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-16)
+        }
+        
+        descriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(temperamentLabel.snp.bottom).offset(16)
+            $0.centerX.equalToSuperview()
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-16)
         }
     }
     
@@ -76,16 +102,32 @@ internal final class CatDetailViewController: UIViewController {
         if let image = selectedBreed.image {
             catImageView.setImage(image, catID: selectedBreed.name!)
         }
+        temperamentLabel.text = selectedBreed.temperament
+        descriptionLabel.text = selectedBreed.description
     }
 }
 
-extension CatDetailViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }
-}
+// TODO: Display characteristic
 
+//extension CatDetailViewController: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 3
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "catInfoCell", for: indexPath)
+//        let breed = viewModel.breed
+//
+//        switch indexPath.row {
+//        case 0:
+//            cell.textLabel?.text = breed.temperament
+//        case 1:
+//            cell.textLabel?.text = breed.description
+//        default:
+//            break
+//        }
+//
+//        return cell
+//    }
+//}
+//
