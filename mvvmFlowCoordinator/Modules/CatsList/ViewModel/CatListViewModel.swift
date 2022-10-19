@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol MainViewModelProtocol {
+protocol CatListViewModelProtocol {
     var title: String { get set }
     var reload: (() -> ())? { get set }
     var breeds: [Breed] { get set }
@@ -16,7 +16,7 @@ protocol MainViewModelProtocol {
     func viewModelForSelectedRow(at indexPath: IndexPath)
 }
 
-internal final class MainViewModel: MainViewModelProtocol {
+internal final class CatListViewModel: CatListViewModelProtocol {
     
     internal var breeds: [Breed] = []
     internal var reload: (() -> ())?

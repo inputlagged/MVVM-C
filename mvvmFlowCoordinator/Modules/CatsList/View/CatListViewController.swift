@@ -9,72 +9,36 @@ import UIKit
 import SnapKit
 
 
-internal final class MainViewController: UIViewController {
+internal final class CatListViewController: BaseViewController<CatListView> {
     
-    internal var viewModel: MainViewModelProtocol!
-
-    private lazy var catsCollectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.estimatedItemSize = .zero
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(CatCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.showsVerticalScrollIndicator = false
-        return collectionView
-    }()
-    
-    private let acitvityIndicator: UIActivityIndicatorView = {
-        let indicitorView = UIActivityIndicatorView(style: .gray)
-        return indicitorView
-    }()
+    internal var viewModel: CatListViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        title = viewModel.title
-        addSubviews()
-        setupConstraints()
-        setupBindables()
-        showActivityIndicator()
-        viewModel.fetchBreeds()
-    }
-    
-    private func addSubviews() {
-        view.addSubview(catsCollectionView)
-        view.addSubview(acitvityIndicator)
-    }
-    
-    private func setupConstraints() {
-        catsCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(16)
-        }
+        rootView.catsCollectionView.delegate = self
+        rootView.catsCollectionView.dataSource = self
         
-        acitvityIndicator.snp.makeConstraints {
-            $0.center.equalToSuperview()
-        }
+        title = viewModel.title
+        
+        setupBindables()
+//        showActivityIndicator()
+        viewModel.fetchBreeds()
     }
     
     private func setupBindables() {
         viewModel.reload = { [weak self] in
             DispatchQueue.main.async {
-                self?.catsCollectionView.reloadData()
-                self?.acitvityIndicator.stopAnimating()
+                self?.rootView.catsCollectionView.reloadData()
+                self?.rootView.acitvityIndicator.stopAnimating()
             }
         }
     }
-    
-    private func showActivityIndicator() {
-        acitvityIndicator.startAnimating()
-    }
 }
 
-extension MainViewController: UICollectionViewDelegateFlowLayout {
+// MARK: UICollectionViewDelegateFlowLayout
+
+extension CatListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 2.5, height: collectionView.frame.width / 2)
     }
@@ -88,7 +52,9 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension MainViewController: UICollectionViewDataSource {
+// MARK: UICollectionViewDataSource
+
+extension CatListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.breeds.count
     }

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-internal final class CatCollectionViewCell: UICollectionViewCell {
+internal final class CatCollectionViewCell: BaseUICollectionViewCell {
     private let catImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false

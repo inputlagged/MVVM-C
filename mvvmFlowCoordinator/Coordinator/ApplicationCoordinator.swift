@@ -6,6 +6,7 @@ protocol DetailScreen: AnyObject {
 }
 
 internal final class ApplicationCoordinator: Coordinator, DetailScreen {
+    internal var parentCoordinator: Coordinator?
     internal var childCoordinators: [Coordinator] = []
     internal var navigationController: UINavigationController
     
@@ -19,9 +20,13 @@ internal final class ApplicationCoordinator: Coordinator, DetailScreen {
     }
     
     internal func start() {
+        navigateToCatList()
+    }
+    
+    internal func navigateToCatList() {
         let networkService = assembly.container.resolve(NetworkService.self)
-        let viewModel = MainViewModel(networkService: networkService!, coordinator: self)
-        let mainViewController = MainViewController()
+        let viewModel = CatListViewModel(networkService: networkService!, coordinator: self)
+        let mainViewController = CatListViewController()
         mainViewController.viewModel = viewModel
         navigationController.pushViewController(mainViewController, animated: true)
     }
@@ -30,14 +35,5 @@ internal final class ApplicationCoordinator: Coordinator, DetailScreen {
         let viewModel = CatDetailViewModel(breed: breed)
         let detailViewController = CatDetailViewController(viewModel: viewModel)
         navigationController.pushViewController(detailViewController, animated: true)
-    }
-    
-    internal func childDidFinish(_ child: Coordinator?) {
-        for (index, value) in childCoordinators.enumerated() {
-            if value === child {
-                childCoordinators.remove(at: index)
-                return
-            }
-        }
     }
 }
